@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\OnlineShop",
+    "\\OnlineShop\\Areas",
+    "\\OnlineShop\\Areas\\Identity",
+    "\\OnlineShop\\Areas\\Identity\\Pages",
+    "\\OnlineShop\\Areas\\Identity\\Pages\\Account",
+    "\\OnlineShop\\Models",
+    "\\OnlineShop\\obj",
+    "\\OnlineShop\\Views",
+    "\\OnlineShop\\Views\\Shared"
+  ],
+  "SelectedNode": "\\OnlineShop\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+  "PreviewInSolutionExplorer": false
+}

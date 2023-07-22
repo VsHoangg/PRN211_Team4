@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Category>
+
+<div class="container pt-5">
+    <div class="custom-row">
+        <div>
+            <h2>Category List</h2>
+        </div>
+
+        <div>
+            <a asp-controller="Category" asp-action="Create" class="customed-button"><img src="~/assets/plus.png" class="edit-icon inverted">Add new category</a>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <div class="frame">
+          @if (Model.Count() > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var category in Model)
+                {
+                    <tr>
+                        <td width="50%">@category.Name</td>
+                       @*  <td width="20%">@category.DisplayOrder</td>*@
+                         <td>
+                              <a asp-controller="Category" asp-route-Id="@category.Code" asp-action="Edit" title="edit"><img src="~/assets/edit.png" class="edit-icon"></a>
+                              <a asp-controller="Category" asp-route-Id="@category.Code" asp-action="Delete" title="delete"><img src="~/assets/delete.png" class="edit-icon"></a>
+                         </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p >No categories</p>
+    }
+    </div>
+</div>
+@section Scripts {
+    @{ <partial name="_Alert" /> }
+}

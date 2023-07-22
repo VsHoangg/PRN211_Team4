@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Item>
+
+    <div class="container pt-5">
+    <div class="custom-row">
+        <div>
+            <h2>Items List</h2>
+        </div>
+
+        <div>
+            <a asp-controller="Item" asp-action="Create" class="customed-button"><img src="~/assets/plus.png" class="edit-icon inverted">Add new item</a>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <div class="frame">
+          @if (Model.Count() > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Sex
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                        <tr>
+                            <td>
+                                @if (item.Image != null)
+                                {
+                                    <img src="@WC.ImagePath@item.Image" width="40px"/>
+                                }
+                                else
+                                {
+                                    <img src="~/assets/no-photos.png" width="40px" />
+                                }
+                            </td>
+                        <td width="20%">@item.Name</td>
+                        <td width="20%">@item.Category.Name</td>
+                        <td width="20%">@item.Sex.ToString()</td>
+                        <td width="20%">@item.Price.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture) $</td>
+                         <td>
+                              <a asp-controller="Item" asp-route-Id="@item.Id" asp-action="Edit" title="edit"><img src="~/assets/edit.png" class="edit-icon"></a>
+                              <a asp-controller="Item" asp-route-Id="@item.Id" asp-action="Delete" title="delete"><img src="~/assets/delete.png" class="edit-icon"></a>
+                         </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p >No items</p>
+    }
+    </div>
+</div>
+@section Scripts {
+    @{<partial name="_Alert"/>}
+}
